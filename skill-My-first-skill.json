@@ -1,0 +1,504 @@
+{
+  "intents": [
+    {
+      "intent": "Greeting",
+      "examples": [
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "Hello"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Thanks",
+      "examples": [
+        {
+          "text": "Thank you"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "websiteDetails",
+      "examples": [
+        {
+          "text": "How can I move robot?"
+        },
+        {
+          "text": "What does this robot do?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "company_information",
+      "examples": [
+        {
+          "text": "what is your mission?"
+        },
+        {
+          "text": "who are your clients?"
+        },
+        {
+          "text": "I want to contact with you"
+        },
+        {
+          "text": "what is your vision?"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "contact_method",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "phone",
+          "synonyms": [
+            "mobile"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "email",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "information",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "vision",
+          "synonyms": [
+            "goal"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "clients",
+          "synonyms": [
+            "customers"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mission",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "directions",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "forward",
+          "synonyms": [
+            "ahead"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "backward",
+          "synonyms": [
+            "rearward"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "stop",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "right",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "left",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "clients",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "varies universities like prince Nora university, Dammam university and more! "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1594919314150",
+      "conditions": "@information:clients",
+      "dialog_node": "node_8_1594930845539",
+      "previous_sibling": "node_4_1594930803525"
+    },
+    {
+      "type": "standard",
+      "title": "phone",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "you can contact us via this number: 0580202718"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1594919314150",
+      "conditions": "@contact_method:phone",
+      "dialog_node": "node_3_1594932071789",
+      "previous_sibling": "node_6_1594932007365"
+    },
+    {
+      "type": "standard",
+      "title": "vision",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "To be the first destination for innovators and researchers in the Arab world and provide them with everything they need in the field of electronics, mechanics and computers."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1594919314150",
+      "conditions": "@information:vision",
+      "dialog_node": "node_4_1594930803525",
+      "previous_sibling": "node_7_1594930081171"
+    },
+    {
+      "type": "standard",
+      "title": "email",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "you can contact us via this email: info@s-m.com.sa"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1594919314150",
+      "conditions": "@contact_method:email",
+      "dialog_node": "node_6_1594932007365",
+      "previous_sibling": "node_8_1594930845539"
+    },
+    {
+      "type": "standard",
+      "title": "mission",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Our mission is to transform the technology generation from users to producers and developers."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1594919314150",
+      "conditions": "@information:mission",
+      "dialog_node": "node_7_1594930081171"
+    },
+    {
+      "type": "standard",
+      "title": "forward",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "click on forward button to move robot ahead"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1594931446341",
+      "conditions": "@directions:forward",
+      "dialog_node": "node_2_1594931875618",
+      "previous_sibling": "node_7_1594931602732"
+    },
+    {
+      "type": "standard",
+      "title": "stop",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "to stop robot you can easily click on stop button"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1594931446341",
+      "conditions": "@directions:stop",
+      "dialog_node": "node_5_1595012706709",
+      "previous_sibling": "node_2_1594931932055"
+    },
+    {
+      "type": "standard",
+      "title": "right",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "click on the right button to move robot to right"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1594931446341",
+      "conditions": "@directions:right",
+      "dialog_node": "node_7_1594931602732",
+      "previous_sibling": "node_1_1594931546628"
+    },
+    {
+      "type": "standard",
+      "title": "backward",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "click on the backward button to move robot to back"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1594931446341",
+      "conditions": "@directions:backward",
+      "dialog_node": "node_2_1594931932055",
+      "previous_sibling": "node_2_1594931875618"
+    },
+    {
+      "type": "standard",
+      "title": "left",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "click on the left button to move robot to the left"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1594931446341",
+      "conditions": "@directions:left",
+      "dialog_node": "node_1_1594931546628"
+    },
+    {
+      "type": "standard",
+      "title": "Website function",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_1_1594931546628"
+      },
+      "conditions": "#websiteDetails",
+      "dialog_node": "node_2_1594931446341",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_10_1594838283807",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Greeting",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi there, I'm here to answer your questions!"
+              },
+              {
+                "text": "welcome, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#Greeting",
+      "dialog_node": "node_10_1594838283807",
+      "previous_sibling": "node_6_1594845808772"
+    },
+    {
+      "type": "standard",
+      "title": "Thank you",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Anytime!"
+              },
+              {
+                "text": "You're Welcome"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Thanks",
+      "dialog_node": "node_6_1594845808772",
+      "previous_sibling": "node_3_1594919314150"
+    },
+    {
+      "type": "standard",
+      "title": "company information",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_7_1594930081171"
+      },
+      "conditions": "#company_information",
+      "dialog_node": "node_3_1594919314150",
+      "previous_sibling": "node_2_1594931446341"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
